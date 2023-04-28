@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFrameworkCore.GenericRepository.Nuget" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
   </ItemGroup>
 
 </Project>
