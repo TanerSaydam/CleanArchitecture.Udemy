@@ -1,3 +1,4 @@
+using CleanArchitecture.Application.Abstractions;
 using CleanArchitecture.Application.Behaviors;
 using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Entities;
@@ -7,6 +8,7 @@ using CleanArchitecture.Persistance.Repositories;
 using CleanArchitecture.Persistance.Services;
 using CleanArchitecture.WebApi.Middleware;
 using CleanArchitecture.WebApi.OptionsSetup;
+using CleanArcihtecture.Infrastructure.Authenticaton;
 using CleanArcihtecture.Infrastructure.Services;
 using FluentValidation;
 using GenericRepository;
@@ -24,6 +26,8 @@ builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddTransient<ExceptionMiddleware>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork<AppDbContext>>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+
+builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 
 builder.Services.ConfigureOptions<JwtOptionsSetup>();
 builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();

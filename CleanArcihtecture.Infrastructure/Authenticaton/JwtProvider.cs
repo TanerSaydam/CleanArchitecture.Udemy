@@ -52,10 +52,7 @@ public sealed class JwtProvider : IJwtProvider
             token,
             refreshToken,
             user.RefreshTokenExpires,
-            user.Id,
-            user.UserName,
-            user.NameLastName,
-            user.Email);
+            user.Id);
 
         return response;
     }

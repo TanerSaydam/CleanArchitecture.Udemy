@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Application.Features.AuthFeatures.Commands.Register;
+﻿using CleanArchitecture.Application.Features.AuthFeatures.Commands.Login;
+using CleanArchitecture.Application.Features.AuthFeatures.Commands.Register;
 using CleanArchitecture.Domain.Dtos;
 using CleanArchitecture.Presentation.Abstraction;
 using MediatR;
@@ -18,4 +19,12 @@ public sealed class AuthController : ApiController
         MessageResponse response = await _mediator.Send(request, cancellationToken);
         return Ok(response);
     }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Login(LoginCommand request, CancellationToken cancellationToken)
+    {
+        LoginCommandResponse response = await _mediator.Send(request, cancellationToken);
+        return Ok(response);
+    }
+
 }
