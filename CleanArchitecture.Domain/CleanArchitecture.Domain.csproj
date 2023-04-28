@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="EntityFrameworkCore.GenericRepository.Nuget" Version="1.0.2" />
+  </ItemGroup>
+
 </Project>
