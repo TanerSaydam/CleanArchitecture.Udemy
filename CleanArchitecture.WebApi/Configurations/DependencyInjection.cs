@@ -7,6 +7,7 @@ namespace CleanArchitecture.WebApi.Configurations
         public static IServiceCollection InstallServices(
             this IServiceCollection services,
             IConfiguration configuration,
+            IHostBuilder hostBuilder,
             params Assembly[] assemblies )
         {
             IEnumerable<IServiceInstaller> serviceInstallers = assemblies
@@ -17,7 +18,7 @@ namespace CleanArchitecture.WebApi.Configurations
 
             foreach (IServiceInstaller serviceInstaller in serviceInstallers)
             {
-                serviceInstaller.Install(services, configuration);
+                serviceInstaller.Install(services, configuration, hostBuilder);
             }
 
             return services;
