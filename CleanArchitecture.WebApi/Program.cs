@@ -14,7 +14,6 @@ using FluentValidation;
 using GenericRepository;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -24,10 +23,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IMailService, MailService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
 builder.Services.AddTransient<ExceptionMiddleware>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork<AppDbContext>>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+
 
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 
@@ -42,7 +45,7 @@ builder.Services.AddAutoMapper(typeof(CleanArchitecture.Persistance.AssemblyRefe
 string connectionString = builder.Configuration.GetConnectionString("SqlServer");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddIdentity<User, IdentityRole>(options=>
+builder.Services.AddIdentity<User, Role>(options=>
 {
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 1;
