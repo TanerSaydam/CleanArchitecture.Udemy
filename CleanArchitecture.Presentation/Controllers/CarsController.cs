@@ -5,6 +5,7 @@ using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Presentation.Abstraction;
 using EntityFrameworkCorePagination.Nuget.Pagination;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.Presentation.Controllers;
